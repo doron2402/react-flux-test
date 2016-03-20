@@ -1,5 +1,16 @@
-$ = jQuery = require('jquery');
+"use strict";
+//Modules
+var jQuery = require('jquery');
+var React = require('react');
+var Router = require('react-router');
+var routes = require('./routes');
 
-var App = console.log('Hello world from Browserify');
+var InitializeActions = require('./actions/initializeActions');
+InitializeActions.initApp();
+//HistoryLocation - let use html5 routing without '#' clean url
+//Router.run(routes, Router.HistoryLocation, function(Handler){
+Router.run(routes, function(Handler){
+  React.render(<Handler/>, document.getElementById('app'));
+});
 
-module.exports = App;
+
